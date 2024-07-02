@@ -6,12 +6,15 @@ import NoteForm from '../components/NoteForm';
 import { UserAuth } from "../context/AuthContext";
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { doc, deleteDoc } from 'firebase/firestore';
+import Spinner from '../components/Spinner';
 
 export default function NotesView() {
     const [notes, setNotes] = useState([]);
     const { user } = UserAuth();
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const q = query(collection(db, 'notes'));
         const unsubscribe = onSnapshot(q, (querySnapshot) => {
             let notesArray = [];
@@ -21,8 +24,10 @@ export default function NotesView() {
                 }
             });
             setNotes(notesArray);
+            setIsLoading(false);
         });
-
+        
+        setIsLoading(false);
         return () => unsubscribe(); // Clean up subscription on unmount
     }, [user]);
 
@@ -45,9 +50,10 @@ export default function NotesView() {
                 <NoteForm />
             </div>
             <div className="notes-list flex flex-wrap justify-center mt-10">
+                {isLoading && (<Spinner />)}
                 {notes.map((note) => (
                     <Note key={note.id} note={note} onDelete={deleteNote} />
-                ))}
+                ))}                
             </div>
         </div>
     );
