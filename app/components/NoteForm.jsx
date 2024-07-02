@@ -23,16 +23,17 @@ const NoteForm = () => {
     }
 
     return (
-        <>
+        <div className='flex flex-col gap-2'>
             <div className="note-form border border-slate-800 rounded max-w-2xl">
                 <textarea
+                    className='p-2'
                     value={noteText}
                     onChange={(e) => setNoteText(e.target.value)}
                     placeholder="Ingresa tu nota..."
                 />
             </div>
-            <button className='border border-slate-800 rounded' onClick={addNote}>Añadir nota</button>
-        </>
+            <button className='border border-slate-800 rounded hover:bg-slate-400 duration-75' onClick={addNote}>Añadir nota</button>
+        </div>
     );
 };
 

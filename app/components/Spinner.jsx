@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
-import loader from "./spinner.gif";
+import { RiLoader5Line } from "react-icons/ri";
 
 const Spinner = () => {
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <Image src={loader} alt="loading.." />
+    <div className="w-full h-screen flex items-center justify-center animate-spin">
+      <RiLoader5Line className="text-5xl text-slate-600" /> 
     </div>
   );
 };

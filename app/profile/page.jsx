@@ -25,7 +25,7 @@ const page = () => {
       ) : user ? (
         <NotesView notes={[]} />
       ) : (
-        <p>Debes iniciar sesión para ver esto.</p>
+        <p className="flex flex-col justify-center items-center text-2xl font-semibold">Debes iniciar sesión para ver esto.</p>
       )}
     </div>
   );

@@ -35,7 +35,7 @@ const Navbar = () => {
   }, [user]);
 
   return (
-    <div className="h-20 w-full border-b-2 flex items-center justify-between p-2">
+    <div className="h-20 w-full font-semibold flex items-center justify-between p-2 shadow-md">
       <ul className="flex">
         {loading ? null : !user ? (<li className="bg-transparent hover:text-slate-500 p-2 cursor-pointer">
           <Link href="/">Home</Link>
@@ -63,7 +63,7 @@ const Navbar = () => {
       ) : (
         <div>
           <p>Bienvenido, {user.displayName}</p>
-          <p className="bg-transparent hover:text-slate-500 cursor-pointer" onClick={handleSignOut}>
+          <p className="bg-slate-300 py-2 rounded-md flex justify-center hover:text-slate-500 cursor-pointer" onClick={handleSignOut}>
             Cerrar sesión
           </p>
         </div>
